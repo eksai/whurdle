@@ -18,6 +18,7 @@ input[type=checkbox] {transform: scale(1.5);}
 #showhide {cursor:pointer; color:#2D4FF5; text-decoration: underline;}
 #clear {cursor:pointer; color:#2D4FF5; text-decoration: underline; float:right;}
 .instructions {display:inline;}
+#showonhide {display:none;}
 .notused, .used, .correct
   {border: #D4D5D9 2px solid; padding-left:5px; color:#fff; }
 .notused { background-color:#777C7F; width:95%;}
@@ -30,7 +31,7 @@ input[type=checkbox] {transform: scale(1.5);}
 
 <h1>wHurdle</h1>
 
-<div id="marvin"><p><span id="showhide"><span class="instructions">Hide </span>Instructions</span> <span id="clear">Clear</span>
+<div id="marvin"><p><span id="showhide"><span class="instructions">Hide </span>Instructions</span>&nbsp;&nbsp;&nbsp;<span id="showonhide"><a href="https://www.nytimes.com/games/wordle" target="_blank">Open Wordle</a></span> <span id="clear">Clear</span>
 <div class="instructions"><ul>
 <li><img id="logo" class="instructions" src="whurdle.jpg" alt="">Open <a href="https://www.nytimes.com/games/wordle" target="_blank"><strong>Wordle</strong> in a separate tab or window</a> and play as usual. wHurdle only helps you think of 5-letter words; it does not necessarily provide the answer.</li>
 <li>After each Wordle guess, come back to this page and enter the gray, yellow, or green letters from your respective Wordle guess lines.</li>
@@ -157,6 +158,7 @@ input[type=checkbox] {transform: scale(1.5);}
         document.getElementById("notused").focus(),
         setTimeout(function() {
             jQuery(".instructions").hide("slow")
+            jQuery("#showonhide").toggle();
         }, 1500)
     }
     setup(),
@@ -188,7 +190,8 @@ input[type=checkbox] {transform: scale(1.5);}
         setup()
     }),
     jQuery("#showhide").click(function() {
-        jQuery(".instructions").toggle()
+        jQuery(".instructions").toggle();
+        jQuery("#showonhide").toggle();
     });
 
 </script>
